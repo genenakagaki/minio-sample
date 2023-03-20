@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "9090:9090"
+    volumes:
+      - ./volumes:/data
+    environment:
+      MINIO_ROOT_USER: root
+      MINIO_ROOT_PASSWORD: password
+    command:
+      server /data --console-address ":9090"
